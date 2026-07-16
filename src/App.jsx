@@ -5,7 +5,6 @@ import Navbar from "./components/Navbar";
 import FloatingElements from "./components/FloatingElements";
 import Question from "./components/Question";
 import FinalScreen from "./components/FinalScreen";
-import BackgroundMusic from "./src/BackgroundMusic";
 
 function App() {
   const [current, setCurrent] = useState(0);

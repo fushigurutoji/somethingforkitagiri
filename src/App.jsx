@@ -15,7 +15,7 @@ function App() {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(null);
 
-  const musicSrc = "/song.mp3"; 
+  const musicSrc = "./song.mp3"; 
 
   useEffect(() => {
     // Initialize the audio element

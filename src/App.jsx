@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react"; // Added useEffect and useRef
 import { story } from "./data/story";
 import Frame from "./components/Frame";
 import Navbar from "./components/Navbar";
@@ -10,6 +10,39 @@ function App() {
   const [current, setCurrent] = useState(0);
   const [showQuestion, setShowQuestion] = useState(false);
   const [showFinal, setShowFinal] = useState(false);
+
+  // --- MUSIC STATE & REF ---
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef(null);
+
+  const musicSrc = "/song.mp3"; 
+
+  useEffect(() => {
+    // Initialize the audio element
+    audioRef.current = new Audio(musicSrc);
+    audioRef.current.loop = true;
+
+    // Cleanup: stop music if user closes/reloads the page
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+      }
+    };
+  }, [musicSrc]);
+
+  const togglePlay = () => {
+    if (!audioRef.current) return;
+
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play().catch((err) => {
+        console.log("Autoplay blocked. User must interact first:", err);
+      });
+    }
+    setIsPlaying(!isPlaying);
+  };
+  // -------------------------
 
   const replay = () => {
     setCurrent(0);
@@ -29,6 +62,12 @@ function App() {
           image={story[current].image}
           text={story[current].text}
           onNext={() => {
+            // Cool detail: Automatically start playing music on the first click!
+            if (!isPlaying && audioRef.current) {
+              audioRef.current.play().catch(() => {});
+              setIsPlaying(true);
+            }
+
             if (current === story.length - 1) {
               setShowQuestion(true);
             } else {
@@ -43,6 +82,15 @@ function App() {
       )}
 
       {showFinal && <FinalScreen onReplay={replay} />}
+
+      {/* FLOATING MUSIC TOGGLE BUTTON */}
+      <button
+        onClick={togglePlay}
+        className="fixed bottom-6 right-6 z-50 p-3 bg-white/80 backdrop-blur-md text-pink-600 rounded-full shadow-lg border border-pink-100 hover:scale-110 active:scale-95 transition-all duration-300 flex items-center justify-center text-xl"
+        title={isPlaying ? "Pause Music" : "Play Music"}
+      >
+        {isPlaying ? "🎵" : "🔇"}
+      </button>
     </div>
   );
 }

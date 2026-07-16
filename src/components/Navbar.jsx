@@ -6,7 +6,7 @@ const Navbar = () => {
       </h1>
 
       <p className="text-lg text-purple-600 font-medium">
-        a proposal to be your denji🫀
+        view in desktop mode🐧
       </p>
     </nav>
   );

@@ -1,4 +1,4 @@
-const elements = ["💗", "🍬", "🧸", "💖", "✨"];
+const elements = ["🎐", "🍬", "🍨", "🎀 ", "✨"⛩️","🌸","🍥","🍜"];
 
 const FloatingElements = () => {
   return (

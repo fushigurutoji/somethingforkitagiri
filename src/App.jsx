@@ -10,6 +10,25 @@ function App() {
   const [current, setCurrent] = useState(0);
   const [showQuestion, setShowQuestion] = useState(false);
   const [showFinal, setShowFinal] = useState(false);
+  Const handleTimeUpdate = () => {
+  const audio = audioRef.current;
+  
+  // If we are before the 13s mark, clear the text
+  if (audio.currentTime < 5) {
+    setCurrentLyric("");
+    return;
+  }
+
+  // Otherwise, find the current chunk
+  const active = lyricsData.find((item, index) => {
+    const next = lyricsData[index + 1];
+    return audio.currentTime >= item.time && (!next || audio.currentTime < next.time);
+  });
+
+  if (active && active.text !== currentLyric) {
+    setCurrentLyric(active.text);
+  }
+};
 
   // --- MUSIC STATE & REF ---
   const [isPlaying, setIsPlaying] = useState(false);

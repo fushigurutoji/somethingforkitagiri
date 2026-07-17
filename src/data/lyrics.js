@@ -8,7 +8,7 @@ export const lyricsData = [
   {time: 40, text: "(I don't know, no, I don't know what you like)"},
   {time: 45, text: "But if you're looking for something new"},
   {time: 48, text: "I know somebody that you could choose"},
-  {time: 52, text: "What about me?"},
+  {time: 51, text: "What about me?"},
   {time: 57, text: "What about me and you together?"},
   {time: 60, text: "Something that could really last forever"},
   {time: 64, text: "What about me?"},

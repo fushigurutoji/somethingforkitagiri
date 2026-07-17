@@ -10,7 +10,7 @@ function App() {
   const [current, setCurrent] = useState(0);
   const [showQuestion, setShowQuestion] = useState(false);
   const [showFinal, setShowFinal] = useState(false);
-  Const handleTimeUpdate = () => {
+  const handleTimeUpdate = () => {
   const audio = audioRef.current;
   
   // If we are before the 13s mark, clear the text

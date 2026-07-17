@@ -5,7 +5,7 @@ export const lyricsData = [
   {time: 29, text: "But don't you worry, don't you, don't worry girl"},
   {time: 34, text: "No, I'm not sure if I'm into you"},
   {time: 37, text: "The last time that you checked, I was probably so sad and confused"},
-  {time: 34, text: "(I don't know, no, I don't know what you like)"},
+  {time: 40, text: "(I don't know, no, I don't know what you like)"},
   {time: 45, text: "But if you're looking for something new"},
   {time: 48, text: "I know somebody that you could choose"},
   {time: 52, text: "What about me?"},
